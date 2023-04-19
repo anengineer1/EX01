@@ -7,6 +7,7 @@ import java.util.List;
  *
  */
 import com.example.demo.dto.Salas;
+import com.example.demo.dto.Usuarios;
 
 public interface ISalasService {
 
@@ -20,5 +21,7 @@ public interface ISalasService {
 	public Salas actualizarSala(Salas almacen); // UPDATE
 
 	public void eliminarSala(long id);// DELETE
+	
+	// public List<Salas> salaXUsuario(List<Usuarios> usuario); // READ buscar por usuario
 
 }

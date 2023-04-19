@@ -27,14 +27,14 @@ public class Salas {
 	@Column(name = "nombre")
 	private String nombre;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "salas")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "sala")
 	private List<Usuarios> usuarios;
 	
 	@ManyToOne
-	@JoinColumn(name = "juego") // poner bien... Falta el OneToMany
+	@JoinColumn(name = "juego")
 	private Juegos juego;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "salas")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "sala")
 	private List<Mensajes> mensajes;
 
 	// Constructores
@@ -75,7 +75,7 @@ public class Salas {
 	 * @return the usuario
 	 */
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "AsignadoA")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Usuarios")
 	public List<Usuarios> getUsuario() {
 		return usuarios;
 	}

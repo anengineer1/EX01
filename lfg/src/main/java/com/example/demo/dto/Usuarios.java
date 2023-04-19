@@ -26,14 +26,11 @@ public class Usuarios {
 	@Column(name = "email")
 	private String email;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuarios")
-	private List<Juegos> juegos;
-
 	@ManyToOne
-	@JoinColumn(name = "sala")
+	@JoinColumn(name = "idsala")
 	private Salas sala;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuarios")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario")
 	private List<Mensajes> mensajes;
 
 	// Constructores
@@ -63,15 +60,6 @@ public class Usuarios {
 	 */
 	public String getEmail() {
 		return email;
-	}
-
-	/**
-	 * @return the juegos
-	 */
-	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Juegos")
-	public List<Juegos> getJuegos() {
-		return juegos;
 	}
 
 	/**
@@ -105,13 +93,6 @@ public class Usuarios {
 	}
 
 	/**
-	 * @param juegos the juegos to set
-	 */
-	public void setJuegos(List<Juegos> juegos) {
-		this.juegos = juegos;
-	}
-
-	/**
 	 * @param salas the salas to set
 	 */
 	public void setSala(Salas sala) {
@@ -141,7 +122,7 @@ public class Usuarios {
 
 	@Override
 	public String toString() {
-		return "Usuarios [username=" + username + ", email=" + email + ", juegos=" + juegos + ", salas=" + sala
+		return "Usuarios [username=" + username + ", email=" + email + ", salas=" + sala
 				+ ", mensajes=" + mensajes + "]";
 	}
 	

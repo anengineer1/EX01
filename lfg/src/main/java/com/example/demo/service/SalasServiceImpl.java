@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.dao.ISalasDAO;
 import com.example.demo.dto.Salas;
+import com.example.demo.dto.Usuarios;
 
 @Service
 public class SalasServiceImpl implements ISalasService {
@@ -44,5 +45,9 @@ public class SalasServiceImpl implements ISalasService {
 		iSalasDAO.deleteById(id);
 		
 	}
+	
+//	public List<Salas> salaXUsuario(List<Usuarios> usuarios) {
+//		return iSalasDAO.findByUsuario(usuarios);
+//	}
 
 }

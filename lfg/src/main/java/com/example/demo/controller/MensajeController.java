@@ -26,9 +26,17 @@ public class MensajeController {
 	@Autowired
 	MensajesServiceImpl mensajesServiceImpl;
 	
+	@Autowired
+	SalasServiceImpl salasServiceImpl;
+	
 	@GetMapping("/mensajes")
 	public List<Mensajes> listarAlmacenes(){
 		return mensajesServiceImpl.listarMensajes();
+	}
+	
+	@GetMapping("/mensajes/sala/{id}")
+	public List<Mensajes> listarXSala(@PathVariable(name="id") long id){
+		return mensajesServiceImpl.listarMensajesXSala(salasServiceImpl.salaXID(id));
 	}
 	
 	@PostMapping("/mensajes")

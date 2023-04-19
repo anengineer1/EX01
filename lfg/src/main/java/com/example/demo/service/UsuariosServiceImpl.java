@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dao.IUsuariosDAO;
+import com.example.demo.dto.Salas;
 import com.example.demo.dto.Usuarios;
 
 @Service
@@ -44,5 +45,10 @@ public class UsuariosServiceImpl implements IUsuariosService {
 		iUsuariosDAO.deleteById(id);
 		
 	}
+	
+	@Override
+	public List<Usuarios> usuarioXSala(Salas sala) {
 
+	return iUsuariosDAO.findBySala(sala);
+	}
 }

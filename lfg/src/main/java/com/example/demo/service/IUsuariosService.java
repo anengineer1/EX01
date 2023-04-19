@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import java.util.List;
 
+import com.example.demo.dto.Salas;
 /**
  * @author Francisco
  *
@@ -20,5 +21,7 @@ public interface IUsuariosService {
 	public Usuarios actualizarUsuario(Usuarios almacen); // UPDATE
 
 	public void eliminarUsuario(String id);// DELETE
+
+	List<Usuarios> usuarioXSala(Salas id);
 
 }

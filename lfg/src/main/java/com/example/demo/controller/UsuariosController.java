@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.dto.Usuarios;
+import com.example.demo.service.SalasServiceImpl;
 import com.example.demo.service.UsuariosServiceImpl;
 
 @RestController
@@ -21,9 +22,17 @@ public class UsuariosController {
 	@Autowired
 	UsuariosServiceImpl usuariosServiceImpl;
 	
+	@Autowired
+	SalasServiceImpl salasServiceImpl;
+	
 	@GetMapping("/usuarios")
 	public List<Usuarios> listarAlmacenes(){
 		return usuariosServiceImpl.listarUsuarios();
+	}
+	
+	@GetMapping("/usuarios/sala/{id}")
+	public List<Usuarios> listarUsuariosXSala(@PathVariable(name="id") long id){
+		return usuariosServiceImpl.usuarioXSala(salasServiceImpl.salaXID(id));
 	}
 	
 	@PostMapping("/usuarios")
@@ -39,7 +48,7 @@ public class UsuariosController {
 		
 		almacen_xid = usuariosServiceImpl.usuarioXID(id);
 		
-		System.out.println("Usuario XID: " + almacen_xid);
+		// System.out.println("Usuario XID: " + almacen_xid);
 		
 		return almacen_xid;
 	}

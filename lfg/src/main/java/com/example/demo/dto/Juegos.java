@@ -27,7 +27,7 @@ public class Juegos {
 	@Column(name = "nombre")
 	private String nombre;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "employee")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "juego")
 	private List<Salas> salas;
 
 	// Constructores
@@ -67,7 +67,7 @@ public class Juegos {
 	 * @return the salas
 	 */
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "AsignadoA")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Salas")
 	public List<Salas> getSalas() {
 		return salas;
 	}

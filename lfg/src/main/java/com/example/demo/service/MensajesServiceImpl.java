@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.dao.IMensajesDAO;
 import com.example.demo.dto.Mensajes;
+import com.example.demo.dto.Salas;
 
 @Service
 public class MensajesServiceImpl implements IMensajesService {
@@ -18,6 +19,10 @@ public class MensajesServiceImpl implements IMensajesService {
 	public List<Mensajes> listarMensajes() {
 		
 		return iMensajesDAO.findAll();
+	}
+	@Override 
+	public List<Mensajes> listarMensajesXSala(Salas sala) {
+		return iMensajesDAO.findBySala(sala);
 	}
 
 	@Override
