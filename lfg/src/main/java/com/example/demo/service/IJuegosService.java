@@ -7,6 +7,7 @@ import java.util.List;
  *
  */
 import com.example.demo.dto.Juegos;
+import com.example.demo.dto.Mensajes;
 
 public interface IJuegosService {
 
@@ -16,5 +17,8 @@ public interface IJuegosService {
 	public Juegos guardarJuego(Juegos caja); // CREATE
 
 	public Juegos juegoXID(long numreferencia); // READ
+	
+	public Juegos actualizarJuego(Juegos almacen); // UPDATE
 
+	public void eliminarJuego(long id);// DELETE
 }

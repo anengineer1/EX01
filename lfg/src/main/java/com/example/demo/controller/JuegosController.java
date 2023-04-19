@@ -21,18 +21,18 @@ public class JuegosController {
 	@Autowired
 	JuegosServiceImpl CajasServiceImpl;
 	
-	@GetMapping("/Juegos")
+	@GetMapping("/juegos")
 	public List<Juegos> listarVideos(){
 		return CajasServiceImpl.listarJuegos();
 	}
 	
-	@PostMapping("/Juegos")
+	@PostMapping("/juegos")
 	public Juegos salvarArticulo(@RequestBody Juegos caja) {
 		
 		return CajasServiceImpl.guardarJuego(caja);
 	}
 	
-	@GetMapping("/Juegos/{id}")
+	@GetMapping("/juegos/{id}")
 	public Juegos articuloXID(@PathVariable(name="id") long id) {
 		
 		Juegos caja_xid= new Juegos();
@@ -42,6 +42,28 @@ public class JuegosController {
 		System.out.println("Video XID: "+caja_xid);
 		
 		return caja_xid;
+	}
+
+	@PutMapping("/juegos/{id}")
+	public Juegos actualizarAlmacen(@PathVariable(name="id")long id,@RequestBody Juegos almacen) {
+		
+		Juegos almacen_seleccionado= new Juegos();
+		Juegos almacen_actualizado= new Juegos();
+		
+		almacen_seleccionado= CajasServiceImpl.juegoXID(id);
+		
+		almacen_seleccionado.setNombre(almacen.getNombre());
+		
+		almacen_actualizado = CajasServiceImpl.actualizarJuego(almacen_seleccionado);
+		
+		System.out.println("El usuario actualizado es: "+ almacen_actualizado);
+		
+		return almacen_actualizado;
+	}
+	
+	@DeleteMapping("/juegos/{id}")
+	public void eleiminarAlmacen(@PathVariable(name="id")long id) {
+		CajasServiceImpl.eliminarJuego(id);
 	}
 
 }
